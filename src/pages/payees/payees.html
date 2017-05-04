@@ -1,0 +1,23 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Payees</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let payee of payees">{{ payee.title }}</ion-item>
+  </ion-list>
+
+  <ion-fab right bottom (click)="addPayee()">
+      <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

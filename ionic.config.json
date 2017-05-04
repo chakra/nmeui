@@ -1,0 +1,16 @@
+{
+  "name": "my-places",
+  "app_id": "",
+  "v2": true,
+  "typescript": true,
+  "proxies":[
+    {
+      "path": "/api/oauth/token/",
+      "proxyUrl": "http://localhost:9191/api/oauth/token?username=henryy&password=henryy&grant_type=password"
+    },
+    {
+      "path": "/api/transactions",
+      "proxyUrl": "https://nmeservice.herokuapp.com/transactions"
+    }
+  ]
+}
