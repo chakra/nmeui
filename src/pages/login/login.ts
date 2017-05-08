@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {NavController, Loading, AlertController, LoadingController} from "ionic-angular";
 import {Authservice} from "../../providers/authservice";
-import {Http, Headers, HTTP_BINDINGS} from 'angular2/http';
+import {Http} from 'angular2/http';
 import 'rxjs/Rx';
+import {HomePage} from "../home/home";
 //import {errorHandler} from "@angular/platform-browser/src/browser";
 //import {PayeeService} from "../services/payee.service";
 
@@ -24,6 +25,7 @@ export class Login {
   auth_type:string = "N/A";
   is_auth_error:boolean = true;
   auth_status:string = "N/A";
+  auth_token:{ header_name : string, header_value: string} = {header_name: '', header_value: ''};
 
   constructor(private nav: NavController, private auth: Authservice, private alertCtrl: AlertController, private loadingCtrl: LoadingController) { }
 
@@ -31,35 +33,18 @@ export class Login {
     this.nav.push('RegisterPage');
   }
 
-  public getAuthToken() {
-    this.auth_type = 'Bearer';
-
-    var $obs = this.auth.getAuthTokenSimple(this.registerCredentials);
-
-    $obs.subscribe(
-      data => {
-        this.auth_status = 'OK';
-        this.is_auth_error = false;
-      },
-      err => {
-        var errorMessage = this.extractErrorMessage(err);
-
-        this.auth_status = 'Error : ${errorMessage}';
-        this.is_auth_error = true;
-        this.logError(err);
-      },
-      () => console.log('Finish Auth')
-    );
-  }
-
   public login() {
-    this.showLoading()
-    this.auth.getAuthTokenSimple(this.registerCredentials).subscribe(allowed => {
-        if (allowed) {
-          this.nav.setRoot('HomePage');
-        } else {
-          this.showError("Access Denied");
-        }
+    this.showLoading();
+    console.log(this.auth.getAuthTokenSimple(this.registerCredentials));
+
+    this.auth.getAuthTokenSimple(this.registerCredentials).subscribe(res => {
+       //if (allowed) {
+          console.log(res);
+          this.setTokenHeader(res);
+          this.nav.setRoot(HomePage);
+        //} else {
+        //  this.showError("Access Denied");
+       // }
       },
       error => {
         this.showError(error);
@@ -72,6 +57,14 @@ export class Login {
       dismissOnPageChange: true
     });
     this.loading.present();
+  }
+
+  setTokenHeader(token) {
+    if (token) {
+      this.auth_token.header_name = "Authorization";
+      this.auth_token.header_value = "Bearer " + token;
+      localStorage.setItem('bearercode', this.auth_token.header_value);
+    }
   }
 
   showError(text) {
