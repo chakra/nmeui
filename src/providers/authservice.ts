@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
+import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
 
@@ -17,9 +17,11 @@ export class User {
 @Injectable()
 export class Authservice {
 
-  quoteOfTheDay:string[] = [];
-  api_url:string = "https://obscure-fjord-89635.herokuapp.com/api/oauth/token?username=henryy&password=henryy&grant_type=password";
-  //api_url:string = "http://localhost:9191/api/oauth";
+  //quoteOfTheDay:string[] = [];
+
+ // apiToken:string = '/api/bearer';
+
+  apiToken:string = 'https://nme-user-service.herokuapp.com/api/bearer';
 
   app_name:string = "angular2";
   auth_status:string = "";
@@ -32,39 +34,23 @@ export class Authservice {
 
 
   currentUser: User;
-  //authdata = { client_id: 'nmeuserclient', client_secret: 'secret' };
 
   get tokenUrl() {
-   // return this.api_url + "/token?username=henryy&password=henryy&grant_type=password";
-
-    return '/api';
+    return '/api/bearer';
   }
 
   public getAuthTokenSimple(credentials) {
 
-    var authdata = window.btoa('nmeuserclient:secret');
+    let clientDetails = <any>{};
+    clientDetails.clientId = "nmeuserclient";
+    clientDetails.username = credentials.email;
+    clientDetails.password = credentials.password;
+    clientDetails.grantType = "password";
+    clientDetails.secret = "secret";
 
-    let header = new Headers()
-    header.append('Content-Type', 'application/json; charset=utf-8');
-    header.append('Authorization',  'Basic ' + authdata);
-    //header.append('Accept', 'application/json; charset=utf-8');
-    //header.append('Access-Control-Request-Headers', 'Authorization');
-    //header.append('Access-Control-Request-Method', 'GET');
-
-    var $obs = this.http.get("/api/oauth/token/", {headers : header})
+    return this.http.post(this.apiToken, clientDetails )
       .map(res => this.getToken(res));
 
-    $obs.subscribe(
-      data => {
-        this.setTokenHeader(data)
-      },
-      err => {
-        console.log('failed login');
-      },
-      () => console.log('Finish Auth')
-    );
-
-    return $obs;
   }
 
   private extractErrorMessage(err) {
@@ -74,14 +60,6 @@ export class Authservice {
   public useAnoymousAuth() {
 
     this.setAnonymousHeader();
-  }
-
-  private setTokenHeader(jwt) {
-    if (jwt) {
-      this.auth_token.header_name = "Authorization";
-      this.auth_token.header_value = "Bearer " + jwt;
-      //localStorage.setItem('jwt', jwt);
-    }
   }
 
   public setAnonymousHeader() {
@@ -95,62 +73,6 @@ export class Authservice {
     return res.json().access_token;
   }
 
-  private get authHeader() {
-    var authHeader = new Headers();
-    authHeader.append(this.auth_token.header_name, this.auth_token.header_value);
-    return authHeader;
-  }
-
-  public postItem(name) {
-    let data = JSON.stringify({description: name});
-
-    return this.http.post(this.api_url + '/1/objects/todo?returnObject=true', data,
-      {
-        headers: this.authHeader
-      })
-      .retry(3)
-      .map(res => {
-        console.log(res.json());
-        return res.json();
-      });
-
-  }
-
-  /*
-   let header = new Headers();
-   header.append('Content-Type', 'application/x-www-form-urlencoded');
-
-   var $obs = this.http.post(this.tokenUrl, creds, {
-   headers: header
-   })
-   .map(res => this.getToken(res));
-
-   */
-
-
- /* public login(credentials) {
-    if (credentials.email === null || credentials.password === null) {
-      return Observable.throw("Please insert credentials");
-    } else {
-
-      var _url = "https://obscure-fjord-89635.herokuapp.com/api/oauth/token?username=henryy&password=henryy&grant_type=password"
-      var _authdata = 'nmeclient' + ':' + 'secret';
-
-      var _headers = {
-        'Authorization': 'Basic ' + _authdata,
-        'Accept': 'application/json; charset=utf-8',
-        'Content-Type': 'application/json; charset=utf-8'
-      };
-
-     return Observable.create(observer => {
-        // At this point make a request to your backend to make a real check!
-        let access = (credentials.password === "pass" && credentials.email === "email");
-        this.currentUser = new User('Simon', 'saimon@devdactic.com');
-        observer.next(access);
-        observer.complete();
-      });
-    }
-  }*/
 
   public register(credentials) {
     if (credentials.email === null || credentials.password === null) {

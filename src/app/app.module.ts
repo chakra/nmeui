@@ -7,7 +7,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { Payees } from '../pages/payees/payees';
-import { Payee } from '../pages/payee/payee'
+import { Payee } from '../pages/payee/payee';
+import {Transactions} from "../pages/transactions/transactions";
 import {IonicStorageModule} from "@ionic/storage";
 
 import {Login} from "../pages/login/login";
@@ -17,6 +18,14 @@ import {Payeeservice} from "../providers/payeeservice";
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {Authservice} from "../providers/authservice";
+import {Transaction} from "../providers/transaction";
+import {Updatepayee} from "../pages/updatepayee/updatepayee";
+import {Accountservice} from "../providers/accountservice";
+import {Personaldetails} from "../pages/personaldetails/personaldetails";
+import {Tabs} from "../pages/tabs/tabs";
+import {Transferpage} from "../pages/transferpage/transferpage";
+import {Modal} from "../pages/modal/modal";
+
 
 @NgModule({
   declarations: [
@@ -25,7 +34,13 @@ import {Authservice} from "../providers/authservice";
     Payees,
     Payee,
     Login,
-    Register
+    Register,
+    Transactions,
+    Updatepayee,
+    Personaldetails,
+    Tabs,
+    Transferpage,
+    Modal
   ],
   imports: [
     BrowserModule,
@@ -41,14 +56,22 @@ import {Authservice} from "../providers/authservice";
     Payees,
     Payee,
     Login,
-    Register
+    Register,
+    Transactions,
+    Updatepayee,
+    Personaldetails,
+    Tabs,
+    Transferpage,
+    Modal
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Payeeservice,
-    Authservice
+    Authservice,
+    Transaction,
+    Accountservice
   ]
 })
 export class AppModule {}

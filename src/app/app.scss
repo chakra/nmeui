@@ -14,3 +14,38 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+// Include Sass mixins
+@import "utils/mixins";
+
+// Include Theme variables
+@import "common/theme.variables";
+// Include Ionic override variables
+@import "utils/override_variables";
+
+// Include Bourbon
+@import "../../node_modules/bourbon/app/assets/stylesheets/_bourbon";
+// Include all of Ionic
+//@import "www/lib/ionic/scss/ionic";
+
+// Include Ionic override styles
+@import "utils/override_styles";
+
+// Include project Sass variables
+// Common
+@import "common/common.variables";
+// Walkthrough
+@import "../pages/home/home.scss";
+// Auth
+@import "../pages/login/login.scss";
+
+
+// Include custom styles
+// Common
+@import "common/common.styles";
+// Walkthrough
+//@import "scss/walkthrough/walkthrough.styles";
+// Auth
+//@import "scss/auth/auth.styles";
+//@import "scss/auth/login.styles";
+//@import "scss/auth/signup.styles";
