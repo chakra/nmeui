@@ -9,9 +9,9 @@ export class Transaction {
     console.log('Hello Transaction Provider');
   }
 
-  //api : string = '/api/transactions';
+  api : string = '/api/transactions';
 
-  api : string = 'https://nmeservice.herokuapp.com/api/transactions'
+  //api : string = 'https://nmeservice.herokuapp.com/api/transactions'
 
   getTransactions() {
     let headers = new Headers();

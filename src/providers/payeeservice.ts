@@ -15,15 +15,15 @@ export class Payeeservice {
     console.log('Hello Payeeservice Provider');
   }
 
-  //apiCustomers : string = '/api/customer/id/1';
+    apiCustomers : string = '/api/customer/id/1';
 
-  //apiPayee: string = '/api/customer/1/payees';
+   apiPayee: string = '/api/customer/1/payees';
 
-  //apiPayeeUpdate: string = '/api/customer/payee';
+   apiPayeeUpdate: string = '/api/customer/payee';
 
-  apiPayee: string = 'https://nmeservice.herokuapp.com/api/customer/1/payees';
+ // apiPayee: string = 'https://nmeservice.herokuapp.com/api/customer/1/payees';
 
-  apiPayeeUpdate: string = 'https://nmeservice.herokuapp.com/api/customer/payee';
+  //apiPayeeUpdate: string = 'https://nmeservice.herokuapp.com/api/customer/payee';
 
   getPayees() {
 

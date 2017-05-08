@@ -19,9 +19,9 @@ export class Authservice {
 
   //quoteOfTheDay:string[] = [];
 
- // apiToken:string = '/api/bearer';
+  apiToken:string = '/api/bearer';
 
-  apiToken:string = 'https://nme-user-service.herokuapp.com/api/bearer';
+  //apiToken:string = 'https://nme-user-service.herokuapp.com/api/bearer';
 
   app_name:string = "angular2";
   auth_status:string = "";

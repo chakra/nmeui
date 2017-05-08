@@ -11,13 +11,13 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Accountservice {
 
-  //apiCustomerGet : string = "/api/customer/id/1";
+  apiCustomerGet : string = "/api/customer/id/1";
 
- // apiCustomerUpdate : string = "/api/customer";
+  apiCustomerUpdate : string = "/api/customer";
 
-  apiCustomerGet : string = "https://nmeservice.herokuapp.com/api/customer/id/1";
+  //apiCustomerGet : string = "https://nmeservice.herokuapp.com/api/customer/id/1";
 
-  apiCustomerUpdate : string = "https://nmeservice.herokuapp.com/api/customer";
+  //apiCustomerUpdate : string = "https://nmeservice.herokuapp.com/api/customer";
 
   constructor(public http: Http) {
     console.log('Hello Accountservice Provider');

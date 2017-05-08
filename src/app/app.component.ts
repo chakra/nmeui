@@ -11,6 +11,11 @@ import {Login} from "../pages/login/login";
 
 //import {Transactions} from "../pages/transactions/transactions"
 import {Personaldetails} from "../pages/personaldetails/personaldetails";
+import {Payees} from "../pages/payees/payees";
+import {Payee} from "../pages/payee/payee";
+import {Transferpage} from "../pages/transferpage/transferpage";
+import {Transaction} from "../providers/transaction";
+import {Transactions} from "../pages/transactions/transactions";
 //import {Tabs} from "../pages/tabs/tabs";
 
 @Component({
@@ -35,7 +40,12 @@ export class MyApp {
     this.pages = [
       { title: 'Homepage', component: HomePage },
       /*{ title: 'Settings', component: Personaldetails },*/
-      { title: 'Account', component: Personaldetails }
+      { title: 'Account', component: Personaldetails },
+      { title: 'Payees', component: Payees },
+      { title: 'Payee', component: Payee },
+      { title: 'Transfer', component: Transferpage },
+      { title: 'Transaction', component: Transaction },
+      { title: 'Transactions', component: Transactions }
     ];
 
   }
