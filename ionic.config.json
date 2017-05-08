@@ -1,16 +1,36 @@
 {
-  "name": "my-places",
+  "name": "Money Express",
   "app_id": "",
   "v2": true,
   "typescript": true,
   "proxies":[
     {
-      "path": "/api/oauth/token/",
-      "proxyUrl": "http://localhost:9191/api/oauth/token?username=henryy&password=henryy&grant_type=password"
+      "path": "^/api/transactions",
+      "proxyUrl": "https://nmeservice.herokuapp.com/transactions"
     },
     {
-      "path": "/api/transactions",
-      "proxyUrl": "https://nmeservice.herokuapp.com/transactions"
+      "path": "^/api/customers",
+      "proxyUrl": "https://nmeservice.herokuapp.com/customers"
+    },
+    {
+      "path": "^/api/customer/id/1",
+      "proxyUrl": "https://nmeservice.herokuapp.com/customer/id/1"
+    },
+    {
+      "path": "^/api/customer",
+      "proxyUrl": "https://nmeservice.herokuapp.com/customer"
+    },
+    {
+      "path": "^/api/customer/1/payees",
+      "proxyUrl": "https://nmeservice.herokuapp.com/customer/1/payees"
+    },
+    {
+      "path": "^/api/customer/payee",
+      "proxyUrl": "https://nmeservice.herokuapp.com/customer/payee"
+    },
+    {
+      "path": "^/api/bearer",
+      "proxyUrl": "https://nme-user-service.herokuapp.com/api/bearer"
     }
   ]
 }
