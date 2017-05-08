@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import {NavController, Loading, AlertController, LoadingController} from "ionic-angular";
+import {NavController, Loading, AlertController, LoadingController, Tabs} from "ionic-angular";
 import {Authservice} from "../../providers/authservice";
 import {Http} from 'angular2/http';
 import 'rxjs/Rx';
-import {HomePage} from "../home/home";
+//import {HomePage} from "../home/home";
 //import {errorHandler} from "@angular/platform-browser/src/browser";
 //import {PayeeService} from "../services/payee.service";
 
@@ -41,7 +41,7 @@ export class Login {
        //if (allowed) {
           console.log(res);
           this.setTokenHeader(res);
-          this.nav.setRoot(HomePage);
+          this.nav.setRoot(Tabs);
         //} else {
         //  this.showError("Access Denied");
        // }
