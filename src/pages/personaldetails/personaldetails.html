@@ -6,13 +6,97 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>personaldetails</ion-title>
+  <ion-navbar color="appbase">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Account Details</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+  <!--<form (ngSubmit)="onUpdateAccount(f.value)" #f="ngForm">-->
+    <ion-item>
+      <ion-label floating color="appbase">First Name</ion-label>
+      <ion-input type="text" [(ngModel)]="firstName">{{firstName}}</ion-input>
+    </ion-item>
+  <ion-item>
+    <ion-label floating color="appbase">Middle Name</ion-label>
+    <ion-input type="text" [(ngModel)]="middleName">{{middleName}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating color="appbase">Last Name</ion-label>
+    <ion-input type="text" [(ngModel)]="lastName">{{lastName}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating color="appbase">Date of Birth</ion-label>
+    <ion-input type="text" [(ngModel)]="dob">{{dob}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating color="appbase">Driver's Licence</ion-label>
+    <ion-input type="text" [(ngModel)]="driverlicense">{{driverlicense}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating color="appbase">Nationality</ion-label>
+    <ion-input type="text" [(ngModel)]="nationality">{{nationality}}</ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating color="appbase">Passport Number</ion-label>
+    <ion-input type="text" [(ngModel)]="passportnumber">{{passportnumber}}</ion-input>
+  </ion-item>
 
+     <!--this.account = this.accountdetail.account;
+     this.address = this.accountdetail.address;-->
+
+  <ion-card>
+    <ion-card-header>
+      Address
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating color="appbase">Unit</ion-label>
+        <ion-input type="text" [(ngModel)]="unit">{{unit}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating color="appbase">Street</ion-label>
+        <ion-input type="text" [(ngModel)]="street">{{street}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating color="appbase">Post Code</ion-label>
+        <ion-input type="text" [(ngModel)]="postcode">{{postcode}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating color="appbase">State</ion-label>
+        <ion-input type="text" [(ngModel)]="state">{{state}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating color="appbase">Country</ion-label>
+        <ion-input type="text" [(ngModel)]="country">{{country}}</ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Bank Account
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating color="appbase">BSB</ion-label>
+        <ion-input type="text" [(ngModel)]="bsbNumber">{{bsbNumber}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating color="appbase">Account Number</ion-label>
+        <ion-input type="text" [(ngModel)]="accountNumber">{{accountNumber}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating color="appbase">Bank Name</ion-label>
+        <ion-input type="text" [(ngModel)]="bank">{{bank}}</ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+    <button ion-button block color="appbase" (click)="Update()">Update Details</button>
+  <!--</form>-->
 </ion-content>
