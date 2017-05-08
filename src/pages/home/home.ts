@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Transferpage} from "../transferpage/transferpage";
+import {Login} from "../login/login";
 
 @Component({
   selector: 'page-home',
@@ -33,6 +34,10 @@ export class HomePage {
 
   showPayeeList() {
     this.navCtrl.push(Transferpage);
+  }
+
+  login() {
+    this.navCtrl.setRoot(Login);
   }
 
 }
