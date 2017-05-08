@@ -7,18 +7,39 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Payee</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
+
 <ion-content padding>
-  <form (ngSubmit)="onAddPayee(f.value)" #f="ngForm">
     <ion-item>
-      <ion-label>Title</ion-label>
-      <ion-input type="text" name="title" ngModel required></ion-input>
+      <ion-label floating color="appbase">First Name</ion-label>
+      <ion-input type="text" [(ngModel)]="firstName">{{firstName}}</ion-input>
     </ion-item>
-    <button ion-button block type="submit" [disabled]="!f.valid">Add Payee</button>
-  </form>
+    <ion-item>
+      <ion-label floating color="appbase">Middle Name</ion-label>
+      <ion-input type="text"[(ngModel)]="middleName">{{middleName}}</ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating color="appbase">Last Name</ion-label>
+      <ion-input type="text" [(ngModel)]="lastName">{{lastName}}</ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating color="appbase">Account Type</ion-label>
+      <ion-input type="text" [(ngModel)]="accountType">{{accountType}}</ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating color="appbase">Bank</ion-label>
+      <ion-input type="text" [(ngModel)]="bankDetails">{{bankDetails}}</ion-input>
+    </ion-item>
+    <br/>
+
+    <button ion-button block color="appbase" (click)="Insert()">Add Payee</button>
+
 </ion-content>
