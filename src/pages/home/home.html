@@ -1,17 +1,33 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-
-    </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!-- <ion-title>Settings</ion-title> -->
   </ion-navbar>
 </ion-header>
 
 <ion-content no-padding>
-
-  <ion-card no-padding>
-    <img src="img/transparent_text_effect.png"/>
-  </ion-card>
-
-  <button ion-button large (click)="showPayeeList()">Send Money</button>
+  <ion-slides pager>
+    <ion-slide *ngFor="let slide of slides">
+      <ion-toolbar>
+        <ion-buttons end>
+          <button ion-button> >>> Skip</button>
+        </ion-buttons>
+      </ion-toolbar>
+      <img [src]="slide.image" class="slide-image"/>
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+    </ion-slide>
+    <ion-slide>
+     <!-- <img src="assets/img/rate.png" style="width: 50%; height: 60%; align: left"/>-->
+      <img src="assets/img/slide4.png" class="slide-image"/>
+      <button ion-button block icon-right color="appbase" (click)="showPayeeList()">
+        Send Money
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
 
 </ion-content>
+

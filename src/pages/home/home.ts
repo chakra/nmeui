@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {Payees} from "../payees/payees";
+import {Transferpage} from "../transferpage/transferpage";
 
 @Component({
   selector: 'page-home',
@@ -8,12 +8,31 @@ import {Payees} from "../payees/payees";
 })
 export class HomePage {
 
+  slides = [
+    {
+      title: "Welcome to Money Express",
+      description: "The <b>best choice </b>for sending money ",
+      image: "assets/img/slide1.png",
+    },
+    {
+      title: "Welcome to Money Express",
+      description: "Highest exchange rates available in market ",
+      image: "assets/img/slide2.png",
+    },
+    {
+      title: "Welcome to Money Express",
+      description: "Share the happiness ",
+      image: "assets/img/slide3.png",
+    }
+  ];
+
   constructor(public navCtrl: NavController) {
+    console.log(localStorage.getItem("bearercode"));
 
   }
 
   showPayeeList() {
-    this.navCtrl.push(Payees);
+    this.navCtrl.push(Transferpage);
   }
 
 }
