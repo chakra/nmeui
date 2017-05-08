@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Transaction} from "../../providers/transaction";
 
 /**
  * Generated class for the Transactions page.
@@ -13,7 +14,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Transactions {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  transactions: {title: string}[] = [];
+  _embedded;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public transaction: Transaction) {
+
+    this.transaction.getTransactions()
+      .subscribe(val => this.transactions = val._embedded['transactions']);
   }
 
   ionViewDidLoad() {
