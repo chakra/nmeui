@@ -4,7 +4,7 @@ import {Transferpage} from "../transferpage/transferpage";
 import {Login} from "../login/login";
 
 @Component({
-  selector: 'page-home',
+  selector: 'home',
   templateUrl: 'home.html'
 })
 export class HomePage {
@@ -13,17 +13,17 @@ export class HomePage {
     {
       title: "Welcome to Money Express",
       description: "The <b>best choice </b>for sending money ",
-      image: "assets/img/slide1.png",
+      image: "assets/img/money-transfer-logo.png",
     },
     {
-      title: "Welcome to Money Express",
-      description: "Highest exchange rates available in market ",
-      image: "assets/img/slide2.png",
+      title: "Send Money",
+      description: "The <b>best choice </b>for sending money ",
+      image: "assets/img/send-money.png",
     },
     {
-      title: "Welcome to Money Express",
-      description: "Share the happiness ",
-      image: "assets/img/slide3.png",
+      title: "Share the happiness",
+      description: "Share <b>your satisfaction</b> with others ",
+      image: "assets/img/smiley.png",
     }
   ];
 
