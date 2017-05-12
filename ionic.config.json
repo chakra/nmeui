@@ -13,16 +13,12 @@
       "proxyUrl": "https://nmeservice.herokuapp.com/customers"
     },
     {
-      "path": "^/api/customer/id/1",
-      "proxyUrl": "https://nmeservice.herokuapp.com/customer/id/1"
-    },
-    {
       "path": "^/api/customer",
       "proxyUrl": "https://nmeservice.herokuapp.com/customer"
     },
     {
-      "path": "^/api/customer/1/payees",
-      "proxyUrl": "https://nmeservice.herokuapp.com/customer/1/payees"
+      "path": "^/api/customer/payees",
+      "proxyUrl": "https://nmeservice.herokuapp.com/customer/payees"
     },
     {
       "path": "^/api/customer/payee",

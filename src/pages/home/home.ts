@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Transferpage} from "../transferpage/transferpage";
 import {Login} from "../login/login";
+import {Register} from "../register/register";
 
 @Component({
   selector: 'page-home',
@@ -38,6 +39,10 @@ export class HomePage {
 
   login() {
     this.navCtrl.setRoot(Login);
+  }
+
+  register() {
+    this.navCtrl.setRoot(Register);
   }
 
 }

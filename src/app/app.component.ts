@@ -1,22 +1,17 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import {Nav, AlertController, Platform} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-//import {Register} from "../pages/register/register";
 
 import { HomePage } from '../pages/home/home';
-import {Login} from "../pages/login/login";
+import {Push, PushObject, PushOptions} from '@ionic-native/push';
 
-//import {Payees} from "../pages/payees/payees";
-
-//import {Transactions} from "../pages/transactions/transactions"
 import {Personaldetails} from "../pages/personaldetails/personaldetails";
 import {Payees} from "../pages/payees/payees";
 import {Payee} from "../pages/payee/payee";
 import {Transferpage} from "../pages/transferpage/transferpage";
-import {Transaction} from "../providers/transaction";
 import {Transactions} from "../pages/transactions/transactions";
-//import {Tabs} from "../pages/tabs/tabs";
+import {DetailsPage} from "../pages/details-page/details-page";
 
 @Component({
   templateUrl: 'app.html'
@@ -29,25 +24,80 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(private platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private push: Push, private alertCtrl: AlertController) {
 
     platform.ready().then(() => {
       statusBar.styleDefault();
+     // this.initPushNotification();
       splashScreen.hide();
     });
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Homepage', component: HomePage },
-      /*{ title: 'Settings', component: Personaldetails },*/
       { title: 'Account', component: Personaldetails },
       { title: 'Payees', component: Payees },
       { title: 'Payee', component: Payee },
       { title: 'Transfer', component: Transferpage },
-      { title: 'Transaction', component: Transaction },
       { title: 'Transactions', component: Transactions }
     ];
 
+  }
+
+
+  initPushNotification() {
+    if (!this.platform.is('cordova')) {
+      console.warn("Push notifications not initialized. Cordova is not available - Run in physical device");
+      return;
+    }
+    const options: PushOptions = {
+      android: {
+        senderID: "1025430360881"
+      },
+      ios: {
+        alert: "true",
+        badge: false,
+        sound: "true"
+      },
+      windows: {}
+    };
+
+    const pushObject: PushObject = this.push.init(options);
+
+    pushObject.on('registration').subscribe((data: any) => {
+      console.log("device token ->", data.registrationId);
+      //TODO - send device token to server
+    });
+
+    pushObject.on('notification').subscribe((data: any) => {
+      console.log('message', data.message);
+      //if user using app and push notification comes
+      if (data.additionalData.foreground) {
+        // if application open, show popup
+        let confirmAlert = this.alertCtrl.create({
+          title: 'New Notification',
+          message: data.message,
+          buttons: [{
+            text: 'Ignore',
+            role: 'cancel'
+          }, {
+            text: 'View',
+            handler: () => {
+              //TODO: Your logic here
+              this.nav.push(DetailsPage, {message: data.message});
+            }
+          }]
+        });
+        confirmAlert.present();
+      } else {
+        //if user NOT using app and push notification comes
+        //TODO: Your logic on click of push notification directly
+        this.nav.push(DetailsPage, {message: data.message});
+        console.log("Push notification clicked");
+      }
+    });
+
+    pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
   }
 
 

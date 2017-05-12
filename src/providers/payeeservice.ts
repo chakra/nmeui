@@ -15,9 +15,9 @@ export class Payeeservice {
     console.log('Hello Payeeservice Provider');
   }
 
-    apiCustomers : string = '/api/customer/id/1';
+    apiCustomers : string = '/api/customer';
 
-   apiPayee: string = '/api/customer/1/payees';
+   apiPayee: string = '/api/customer/payees';
 
    apiPayeeUpdate: string = '/api/customer/payee';
 
@@ -26,8 +26,6 @@ export class Payeeservice {
   //apiPayeeUpdate: string = 'https://nmeservice.herokuapp.com/api/customer/payee';
 
   getPayees() {
-
-
     let headers = new Headers();
     headers.append('Authorization', localStorage.getItem('bearercode'));
     headers.append('Content-Type', 'application/json');
@@ -37,7 +35,7 @@ export class Payeeservice {
       headers: headers
     });
 
-    return this.http.get(this.apiPayee, options).map(res=>res.json())
+    return this.http.get(this.apiPayee+"/1", options).map(res=>res.json())
   }
 
   InsertPayee(firstname: string, lastname: string, middlename: string, accounttype: any, bankdetails: string, customerid: string) {

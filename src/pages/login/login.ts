@@ -65,6 +65,7 @@ export class Login {
       this.auth_token.header_name = "Authorization";
       this.auth_token.header_value = "Bearer " + token;
       localStorage.setItem('bearercode', this.auth_token.header_value);
+      localStorage.setItem("customerId", "1");
     }
   }
 

@@ -11,20 +11,21 @@ export class Transaction {
 
   api : string = '/api/transactions';
 
+  //apiTransaction: string = '/api/transactions/{customerId}/list/{pageNumber';
+
   //api : string = 'https://nmeservice.herokuapp.com/api/transactions'
 
-  getTransactions() {
+  getTransactions(customerId, pageNumber) {
     let headers = new Headers();
     headers.append('Authorization', localStorage.getItem('bearercode'));
     headers.append('Content-Type', 'application/json');
 
     let options = new RequestOptions({
       method: RequestMethod.Get,
-      //url: this.apiCustomerUpdate,
       headers: headers
     });
 
-    return this.http.get(this.api, options).map(res=>res.json())
+    return this.http.get(this.api + '/' + 1 + '/list/' + pageNumber , options).map(res=>res.json())
   }
 
 }

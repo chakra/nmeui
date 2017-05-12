@@ -21,11 +21,11 @@ export class Payees {
   }
 
   load() {
-    this.presentLoading();
+    //this.presentLoading();
     this.payeeservice.getPayees().subscribe(
       data => {
         this.payees = data;
-        this.loader.dismiss();
+     //   this.loader.dismiss();
       },
       err => {
         console.log(err);

@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { Push } from '@ionic-native/push';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -25,7 +26,7 @@ import {Personaldetails} from "../pages/personaldetails/personaldetails";
 import {Tabs} from "../pages/tabs/tabs";
 import {Transferpage} from "../pages/transferpage/transferpage";
 import {Modal} from "../pages/modal/modal";
-
+import {DetailsPage} from "../pages/details-page/details-page";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {Modal} from "../pages/modal/modal";
     Personaldetails,
     Tabs,
     Transferpage,
-    Modal
+    Modal,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -62,12 +64,14 @@ import {Modal} from "../pages/modal/modal";
     Personaldetails,
     Tabs,
     Transferpage,
-    Modal
+    Modal,
+    DetailsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Push,
     Payeeservice,
     Authservice,
     Transaction,
