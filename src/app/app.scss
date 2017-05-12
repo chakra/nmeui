@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/v2/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -49,3 +48,6 @@
 //@import "scss/auth/auth.styles";
 //@import "scss/auth/login.styles";
 //@import "scss/auth/signup.styles";
+
+@import "../pages/home/home.scss";
+
