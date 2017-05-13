@@ -1,3 +1,29 @@
 page-payee {
+	.listitem
+	{
+		border:none !important;
+		border-bottom:1px solid #ccc !important;
+		padding:0.2em 0.6em;
+		margin:0;
+	}
 
+	.listitem:hover{
+	background:#f1f1f1 !important;
+	}
+
+	.with-curve{
+      border-radius: 5px;
+      width: 98% !important;
+      text-align:center;
+      background:#7f0202;
+  }
+
+  .with-curve:hover{
+      border:1px solid #222;
+      background:#7c2e2e !important;
+  }
+
+  h2{
+  text-transform:capitalize;
+  }
 }

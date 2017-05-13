@@ -48,30 +48,40 @@
   </div>
 </ion-content>-->
 
-<ion-content>
+<ion-content padding>
   <ion-grid>
+
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col width-67>
+      <img src="assets/icon/logo.png"/>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+
+<ion-row>
+        <ion-col class="signup-col">
+          Please register to get benefits.
+        </ion-col>
+      </ion-row>
     <ion-row>
       <ion-col>
-        <ion-item>
-          <ion-label color="primary" floating>Email</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
+        <ion-item item item-input item-stacked-label>
+            <ion-input type="text" placeholder="Email" class="input_field" name="email" required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-input type="password" placeholder="Password" class="input_field" name="password" required></ion-input>
+            </ion-item>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label color="primary" floating>Password</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item no-lines>
-          <button ion-button full block>Register</button>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+
+      <ion-row>
+        <ion-col class="signup-col">
+          <button ion-button class="with-curve" full type="submit">Register</button>
+        </ion-col>
+      </ion-row>
+
+    
   </ion-grid>
 </ion-content>

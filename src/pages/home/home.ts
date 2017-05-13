@@ -13,17 +13,17 @@ export class HomePage {
   slides = [
     {
       title: "Welcome to Money Express",
-      description: "The <b>best choice </b>for sending money ",
+      description: "<b>Best choice </b>for sending money",
       image: "assets/img/money-transfer-logo.png",
     },
     {
       title: "Send Money",
-      description: "The <b>best choice </b>for sending money ",
+      description: "<b>Best choice </b>for sending money",
       image: "assets/img/send-money.png",
     },
     {
       title: "Share the happiness",
-      description: "Share <b>your satisfaction</b> with others ",
+      description: "Share <b>your satisfaction</b> with others",
       image: "assets/img/smiley.png",
     }
   ];

@@ -1,7 +1,7 @@
 
 <ion-header>
 
-  <ion-navbar color="appbase">
+  <ion-navbar color="topcolor">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -12,15 +12,17 @@
 <ion-content padding>
   <ion-spinner name="circles" *ngIf="payees == 0"></ion-spinner>
 
-  <ion-list>
-    <ion-item-sliding *ngFor="let payee of payees">
-    <ion-item>
-
-      <ion-avatar item-left>
-        <img src="assets/icon/avatar04.png">
+  <ion-list class="no-padding" style="border:none;">
+    <ion-item-sliding *ngFor="let payee of payees" style="border:none;">
+    
+    <ion-item class="listitem">
+      <ion-avatar item-left class="char_avr">
+        {{ payee.firstName[0] | uppercase }}
       </ion-avatar>
-      <h2>{{ payee.firstName }}{{ payee.middleName }}{{ payee.lastName }}</h2>
+      <h2>{{ payee.firstName }}<span ng-if="payee.middleName"> {{ payee.middleName }}</span> {{ payee.lastName }}</h2>
+      <p class="small_items">{{ payee.bankDetails}}<br />{{ payee.email}}</p>
     </ion-item>
+
       <ion-item-options side="right">
         <button ion-button (click)="updatePayee(payee)" style="background-color: darkgrey">
           <ion-icon name="open"></ion-icon>

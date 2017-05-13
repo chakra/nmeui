@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="appbase">
+  <ion-navbar color="topcolor">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -17,31 +17,37 @@
 
 <ion-content padding>
   <!--<form (ngSubmit)="onUpdateAccount(f.value)" #f="ngForm">-->
-    <ion-item>
+    <ion-item no-padding>
       <ion-label floating color="appbase">First Name</ion-label>
       <ion-input type="text" [(ngModel)]="firstName">{{firstName}}</ion-input>
     </ion-item>
-  <ion-item>
+
+  <ion-item no-padding>
     <ion-label floating color="appbase">Middle Name</ion-label>
     <ion-input type="text" [(ngModel)]="middleName">{{middleName}}</ion-input>
   </ion-item>
-  <ion-item>
+
+  <ion-item no-padding>
     <ion-label floating color="appbase">Last Name</ion-label>
     <ion-input type="text" [(ngModel)]="lastName">{{lastName}}</ion-input>
   </ion-item>
-  <ion-item>
+
+  <ion-item no-padding>
     <ion-label floating color="appbase">Date of Birth</ion-label>
     <ion-input type="text" [(ngModel)]="dob">{{dob}}</ion-input>
   </ion-item>
-  <ion-item>
+
+  <ion-item no-padding>
     <ion-label floating color="appbase">Driver's Licence</ion-label>
     <ion-input type="text" [(ngModel)]="driverlicense">{{driverlicense}}</ion-input>
   </ion-item>
-  <ion-item>
+
+  <ion-item no-padding>
     <ion-label floating color="appbase">Nationality</ion-label>
     <ion-input type="text" [(ngModel)]="nationality">{{nationality}}</ion-input>
   </ion-item>
-  <ion-item>
+
+  <ion-item no-padding>
     <ion-label floating color="appbase">Passport Number</ion-label>
     <ion-input type="text" [(ngModel)]="passportnumber">{{passportnumber}}</ion-input>
   </ion-item>
@@ -49,7 +55,7 @@
      <!--this.account = this.accountdetail.account;
      this.address = this.accountdetail.address;-->
 
-  <ion-card>
+  <ion-card no-padding>
     <ion-card-header>
       Address
     </ion-card-header>
@@ -97,6 +103,6 @@
     </ion-card-content>
   </ion-card>
 
-    <button ion-button block color="appbase" (click)="Update()">Update Details</button>
+    <button ion-button block class="with-curve" (click)="Update()">Update Details</button>
   <!--</form>-->
 </ion-content>

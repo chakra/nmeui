@@ -1,3 +1,29 @@
 page-transferpage {
+	.with-curve{
+      border-radius: 5px;
+      width: 98% !important;
+      text-align:center;
+      background:#7f0202;
+  }
 
+  .with-curve:hover{
+      border:1px solid #222;
+      background:#7c2e2e !important;
+  }
+
+  .add_space{
+  	width:100%;
+  	margin:1em 0;
+  	border:0px solid #000;
+  }
+
+  .select_width{
+  width:300px;
+  border:0px solid #000;
+  }
+
+  .label_width{
+  width:30%;
+  border:0px solid #000;
+  }
 }

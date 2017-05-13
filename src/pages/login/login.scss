@@ -6,7 +6,18 @@ $auth-alt-color: #9c9d9f;
 $auth-header-bg: #f4f4f4;
 $auth-header-icon-color: #bd5a65;
 
+.login-content{
+  background:#fff;
+}
 
+.input_field{
+  width:100%;
+}
+
+.base_font{
+  color:#0099ff;
+  font-size:0.8em;
+}
 
 
 .login-view
@@ -17,6 +28,22 @@ $auth-header-icon-color: #bd5a65;
     color: $auth-alt-color;
   }
 }
+
+.with-curve{
+      border-radius: 5px;
+      width: 98% !important;
+      text-align:center;
+      background:#7f0202;
+  }
+
+  .with-curve:hover{
+      border:1px solid #222;
+      background:#7c2e2e !important;
+  }
+
+  .register-btn{
+    color:#7f0202 !important;
+  }
 
 
 .auth-view
@@ -168,7 +195,7 @@ $auth-header-icon-color: #bd5a65;
 
     .input-label
     {
-      padding: 0px;
+      padding: 5px;
       text-transform: uppercase;
       color: $auth-color;
       font-size: 12px;
@@ -208,4 +235,6 @@ $auth-header-icon-color: #bd5a65;
       margin: 5px 0px;
     }
   }
+
+
 }

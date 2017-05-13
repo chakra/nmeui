@@ -6,7 +6,7 @@
 -->
 
 <ion-header>
-  <ion-navbar color="appbase">
+  <ion-navbar color="topcolor">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -15,23 +15,31 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-label>Select Payee</ion-label>
-    <ion-select [(ngModel)]="payeeSelected" multiple="false">
-          <ion-option *ngFor="let payee of payees">{{ payee.firstName }} {{ payee.middleName }} {{ payee.lastName }}</ion-option>
+
+  <ion-item no-padding>
+    <ion-label class="label_width">Select Payee: </ion-label>
+    <ion-select [(ngModel)]="payeeSelected" multiple="false" class="select_width"><ion-option *ngFor="let payee of payees">{{ payee.firstName }}{{ payee.middleName ? payee.middleName : '' }} {{ payee.lastName }}</ion-option>
     </ion-select>
   </ion-item>
+  
+  <div class="add_space">&nbsp;</div>
 
+  <ion-item  no-padding>
   <div>
-  <p>Not found in the list? </p><button (click)="addPayee()">Add Payee</button>
+  <p>Not found in the list? </p>
+  <button ion-button block class="with-curve" (click)="addPayee()">Add Payee</button>
   </div>
+  </ion-item>
+  
+  <div class="add_space">&nbsp;</div>
 
-  <ion-item>
-    <ion-label color="primary" fixed>Amount</ion-label>
-    <ion-input type="number" placeholder="Enter Money"></ion-input>
+  <ion-item  no-padding>
+    <ion-label color="secondary">Amount: </ion-label>
+    <ion-input type="number" placeholder="Enter amount"></ion-input>
   </ion-item>
 
+  <div class="add_space">&nbsp;</div>
 
-  <button ion-button block color="appbase" style="margin-top:100px" (click)="submit()">Submit</button>
+  <button ion-button block  class="with-curve" (click)="submit()">Submit</button>
 
 </ion-content>

@@ -1,4 +1,56 @@
 page-payees {
+	
+	.no-padding{
+		margin:0;
+		padding:0;
+		border: 0px;
+	}
+
+	.no-padding:hover{
+
+	}
+
+	.listitem
+	{
+		border:none !important;
+		border-bottom:1px solid #f1f1f1 !important;
+		padding:0.5em;
+		margin:0;
+	}
+
+	.listitem:hover{
+	background:#f1f1f1 !important;
+	}
+
+	.char_avr{
+		padding:0.4em 0 0 0.6em;
+		border-radius:50%;
+		width:40px;
+		height:40px;
+		background:#F9FACD;
+		border:1px solid #666;
+		font-weight:bold;
+		color:#581845;
+		font-size:1.2em;
+	}
+
+	h2{
+  text-transform:capitalize;
+  }
+
+	.list{
+		border:none !important;
+		padding:0;
+		margin:0;
+	}
+
+	.input-wrapper{
+	border:none !important;
+	}
+
+	.small_items{
+	font-size:0.7em;
+	}
 
 }
 

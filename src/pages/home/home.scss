@@ -42,7 +42,7 @@ home{
   }
 
   .background{
-  background:#eee;
+  background:#fff;
   }
 
   .skip_button{
@@ -56,6 +56,8 @@ home{
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    border:1px solid #000;
+    height:100%;
   }
 
   .full_width1{
@@ -75,6 +77,11 @@ home{
   margin-top: -2.2em;
   font-size: 90px;
   color:#7f0202;
+  }
+
+  .grid{
+  height:100%;
+  border:1px solid #000;
   }
 /*
   @media only screen and (max-width: 1200px){
