@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="topcolor"> 
+  <ion-navbar color="topcolor">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -8,37 +8,36 @@
 </ion-header>
 
 <ion-content no-padding class="background">
-  <ion-slides pager>
-    
-    <ion-slide *ngFor="let slide of slides" class="content_middle">
-    
-    <ion-toolbar>
-        <ion-buttons end>
-          <button ion-button>Skip for Login &raquo;</button>
-        </ion-buttons>
-      </ion-toolbar>
-      <div class="full_width">
-      <img [src]="slide.image" class="slide-image"/>
-      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
-      <p [innerHTML]="slide.description"></p>
-      <button ion-button color="appbase" (click)="login()" class="with-curve">
-        Login &nbsp; <ion-icon name="arrow-forward"></ion-icon>
-      </button>
-      </div>
-    </ion-slide>
-    
-    <ion-slide>
-    <div class="full_width">
-     <!-- <img src="assets/img/rate.png" style="width: 50%; height: 60%; align: left"/>-->
-      <img src="assets/img/rate.png" /><div class="rate">84.5</div>
-      <!--<button ion-button block icon-right color="appbase" (click)="showPayeeList()">
-        Send Money
-        <ion-icon name="arrow-forward"></ion-icon>
-      </button>-->
-    </div>
-    </ion-slide>
-  
-  </ion-slides>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-slides pager>
+          <ion-slide *ngFor="let slide of slides">
+            <img [src]="slide.image" class="slide-image"/>
+            <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+            <p [innerHTML]="slide.description"></p>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col no-padding>
+        <button ion-button block icon-right color="appbase" (click)="login()">
+          Login
+        </button>
+      </ion-col>
+      <ion-col no-padding>
+        <button ion-button block icon-right color="appbase" (click)="register()">
+          Register
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Agree to your terms
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
 
