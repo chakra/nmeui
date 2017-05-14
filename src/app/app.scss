@@ -51,3 +51,14 @@
 
 @import "../pages/home/home.scss";
 
+.menu-item {
+  font-size: 0.8em;
+  padding-left:0em;
+}
+
+.menu-item :hover {
+  background-color: #f1f1f1;
+}
+
+
+

@@ -34,12 +34,12 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Homepage', component: HomePage },
-      { title: 'Account', component: Personaldetails },
+      { title: 'Home', component: HomePage },
+      { title: 'Send Money', component: Transferpage },
       { title: 'Payees', component: Payees },
-      { title: 'Payee', component: Payee },
-      { title: 'Transfer', component: Transferpage },
-      { title: 'Transactions', component: Transactions }
+      { title: 'Transactions', component: Transactions },
+      { title: 'Account Settings', component: Personaldetails },
+      { title: 'Logout', component: Personaldetails },
     ];
 
   }

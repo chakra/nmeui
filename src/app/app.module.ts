@@ -27,6 +27,7 @@ import {Tabs} from "../pages/tabs/tabs";
 import {Transferpage} from "../pages/transferpage/transferpage";
 import {Modal} from "../pages/modal/modal";
 import {DetailsPage} from "../pages/details-page/details-page";
+import {Logout} from "../pages/logout/logout";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {DetailsPage} from "../pages/details-page/details-page";
     Tabs,
     Transferpage,
     Modal,
-    DetailsPage
+    DetailsPage,
+    Logout
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import {DetailsPage} from "../pages/details-page/details-page";
     Tabs,
     Transferpage,
     Modal,
-    DetailsPage
+    DetailsPage,
+    Logout
   ],
   providers: [
     StatusBar,

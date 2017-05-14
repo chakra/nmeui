@@ -18,10 +18,10 @@
 
   <ion-item no-padding>
     <!-- <ion-label class="label_width">Select Payee: </ion-label> -->
-    <ion-select [(ngModel)]="payeeSelected" multiple="false" class="select_width" placeholder="Select Payee"><ion-option *ngFor="let payee of payees">{{ payee.firstName }}{{ payee.middleName ? payee.middleName : '' }} {{ payee.lastName }}</ion-option>
+    <ion-select [(ngModel)]="payee" multiple="false" class="select_width" placeholder="Select Payee"><ion-option *ngFor="let payee of payees">{{ payee.firstName }}{{ payee.middleName ? payee.middleName : '' }} {{ payee.lastName }}</ion-option>
     </ion-select>
   </ion-item>
-  
+
   <div class="add_space">&nbsp;</div>
 
   <ion-item  no-padding>
@@ -30,16 +30,16 @@
   <button ion-button block class="with-curve" (click)="addPayee()">Add Payee</button>
   </div>
   </ion-item>
-  
+
   <div class="add_space">&nbsp;</div>
 
   <ion-item  no-padding>
     <ion-label color="primary">Amount: </ion-label>
-    <ion-input type="number" placeholder="Enter amount"></ion-input>
+    <ion-input type="number" placeholder="Enter amount" [(ngModel)]="amount"></ion-input>
   </ion-item>
 
   <div class="add_space">&nbsp;</div>
 
-  <button ion-button block  class="with-curve" (click)="submit()">Submit</button>
+  <button ion-button block  class="with-curve" (click)="submit(payee, amount)">Submit</button>
 
 </ion-content>

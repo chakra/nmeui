@@ -9,6 +9,10 @@
       "proxyUrl": "https://nmeservice.herokuapp.com/transactions"
     },
     {
+      "path": "^/api/transaction",
+      "proxyUrl": "https://nmeservice.herokuapp.com/transaction"
+    },
+    {
       "path": "^/api/customers",
       "proxyUrl": "https://nmeservice.herokuapp.com/customers"
     },

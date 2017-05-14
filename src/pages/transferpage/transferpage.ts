@@ -5,6 +5,7 @@ import {Payeeservice} from "../../providers/payeeservice";
 import {Accountservice} from "../../providers/accountservice";
 import {Modal} from "../modal/modal";
 import {Transactions} from "../transactions/transactions";
+import {Transaction} from "../../providers/transaction";
 
 /**
  * Generated class for the Transferpage page.
@@ -18,12 +19,16 @@ import {Transactions} from "../transactions/transactions";
 })
 export class Transferpage {
 
-  payeeSelected:string = "";
-  payees: {title: string}[] = [];
+  payeeSelected:any = {};
+  payees: any = [];
   loader: any;
+  //payee: any = {};
+  transaction: any = {};
+  amount: string = "";
+  customerDetails: any = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public payeeservice: Payeeservice,
-              public accountservice: Accountservice, public loadingCtrl: LoadingController) {
+              public accountservice: Accountservice, public loadingCtrl: LoadingController, public transactionservice : Transaction) {
   }
 
   ionViewWillEnter() {
@@ -43,35 +48,56 @@ export class Transferpage {
     this.navCtrl.push(Payee);
   }
 
-  submit() {
+  submit(payee, amount) {
     this.checkForAccountDetails();
+
+    this.payees.forEach(payeee => {
+      this.payeeSelected = payeee;
+      var fullName = this.payeeSelected.firstName + " "+ this.payeeSelected.lastName;
+      if (fullName === payee) {
+        this.transaction.toAccount= this.payeeSelected.bankDetails;
+        this.transaction.customerId = this.payeeSelected.customerId;
+        this.transaction.amount = amount;
+        this.transaction.fromAccount= "";
+        this.transaction.rate = "84.5";
+        this.transaction.transactionStatus= "Pending";
+      }
+    });
+
+    this.transactionservice.addTransaction(this.transaction).subscribe(
+      data => {
+        console.log(data);
+        this.navCtrl.push(Transactions);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
 
   }
 
   private checkForAccountDetails() {
-    let customerDetails:any;
     this.accountservice.fetchAccountDetails(1).subscribe(
       data => {
-        customerDetails = data;
+        this.customerDetails = data;
 
         let detailsincomplete:boolean = false
-        if ((typeof customerDetails.nationality!='undefined' && customerDetails.nationality)
-              && (typeof customerDetails.driverlicense!='undefined' && customerDetails.driverlicense)
-              && (typeof customerDetails.driverlicense!='undefined' && customerDetails.driverlicense)
-              && (typeof customerDetails.firstName!='undefined' && customerDetails.firstName)
-              && (typeof customerDetails.middleName!='undefined' && customerDetails.middleName)
-              && (typeof customerDetails.lastName!='undefined' && customerDetails.lastName)
-              && (typeof customerDetails.passportnumber!='undefined' && customerDetails.passportnumber)
-              && (typeof customerDetails.dob!='undefined' && customerDetails.dob)
-              && (typeof customerDetails.address!='undefined' && customerDetails.address)
-              && (typeof customerDetails.account!='undefined' && customerDetails.account)){
+        if ((typeof this.customerDetails.nationality!='undefined' && this.customerDetails.nationality)
+              && (typeof this.customerDetails.driverlicense!='undefined' && this.customerDetails.driverlicense)
+              && (typeof this.customerDetails.driverlicense!='undefined' && this.customerDetails.driverlicense)
+              && (typeof this.customerDetails.firstName!='undefined' && this.customerDetails.firstName)
+              && (typeof this.customerDetails.middleName!='undefined' && this.customerDetails.middleName)
+              && (typeof this.customerDetails.lastName!='undefined' && this.customerDetails.lastName)
+              && (typeof this.customerDetails.passportnumber!='undefined' && this.customerDetails.passportnumber)
+              && (typeof this.customerDetails.dob!='undefined' && this.customerDetails.dob)
+              && (typeof this.customerDetails.address!='undefined' && this.customerDetails.address)
+              && (typeof this.customerDetails.account!='undefined' && this.customerDetails.account)){
           detailsincomplete = true;
         }
 
         if (!detailsincomplete) {
           this.navCtrl.push(Modal);
-        } else {
-          this.navCtrl.push(Transactions);
         }
 
       },

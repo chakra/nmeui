@@ -90,9 +90,20 @@ export class Personaldetails {
   }
 
   presentLoading() {
-    this.loader = this.loadingCtrl.create({
+    /*this.loader = this.loadingCtrl.create({
       content: "Loading..."
     });
+
+*/
+
+    this.loader = this.loadingCtrl.create({
+      spinner: 'hide',
+      content: `
+      <div class="custom-spinner-container">
+        <div class="custom-spinner-box"></div>
+      </div>`
+    });
+
     this.loader.present();
   }
 

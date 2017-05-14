@@ -10,6 +10,9 @@ export class Transaction {
   }
 
   api : string = '/api/transactions';
+  addTransactionApi : string = '/api/transaction';
+
+  transaction: any = {};
 
   //apiTransaction: string = '/api/transactions/{customerId}/list/{pageNumber';
 
@@ -28,4 +31,19 @@ export class Transaction {
     return this.http.get(this.api + '/' + 1 + '/list/' + pageNumber , options).map(res=>res.json())
   }
 
+
+  addTransaction(parameters) {
+    let headers = new Headers();
+    headers.append('Authorization', localStorage.getItem('bearercode'));
+    headers.append('Content-Type', 'application/json');
+
+    let options = new RequestOptions({
+      method: RequestMethod.Post,
+      headers: headers
+    });
+
+    this.transaction = parameters;
+
+    return this.http.post(this.addTransactionApi, this.transaction, options).map(res=> res.json());
+  }
 }
