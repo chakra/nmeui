@@ -18,15 +18,29 @@
   <ion-searchbar class="search-bg" [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
 
   <ion-list class="no-padding" style="border:none;">
-    <ion-item *ngFor="let transaction of transactions" class="listitem pending">
-
+    <ion-item  class="listitem" *ngFor="let transaction of transactions">
+    
+    <!-- <div class="div pending" *ngIf="transaction.transactionStatus == 'Pending'"> -->
       <!-- {{ transaction.customerId }}
       {{ transaction.fromAccount }} -->
       {{ transaction.toAccount }}<br />
-      <span class="small_items">{{ transaction.amount }}<br />
-      {{ transaction.transactionStatus }}</span>
+      <p class="small_items">{{ transaction.amount }}<br />
+      
+      <span *ngIf="transaction.transactionStatus == 'Pending'">
+      <span class="status_pending">{{ transaction.transactionStatus }}</span>
+      </span>
 
-      </ion-item>
+      <span *ngIf="transaction.transactionStatus == 'In Progress'">
+      <span class="status_progress">{{ transaction.transactionStatus }}</span>
+      </span>
+
+      <span *ngIf="transaction.transactionStatus == 'Completed'">
+      <span class="status_complete">{{ transaction.transactionStatus }}</span>
+      </span>
+
+      </p>
+    <!-- </div> -->
+ </ion-item>
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
